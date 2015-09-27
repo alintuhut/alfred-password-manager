@@ -20,10 +20,10 @@ A complete, easy to use, Keychain based password manager for Mac OS X, wrapped i
 
 ##TODO
 
-* Make it easier to add an item in the Keychain
+* Make it easier to add an item in the Keychain  
   hotkey -> Dialog window with "service" prefilled -> call security -> notification
 
-* Quick --fuzzy search for password/account in Keychain
+* Quick --fuzzy search for password/account in Keychain  
   * ~~keyword {query} -> list -> call security -> clipboard~~
   * better service icons
     * make icon for secure notes
