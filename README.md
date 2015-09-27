@@ -36,6 +36,7 @@ A complete, easy to use, Keychain based password manager for Mac OS X, wrapped i
     	* generic application icon
     	* generic web site icon
     	* icons for popular services (real logos)
+    	
     * workflow official icon + one for pass-set-keychain
 
 * Make a nice one page project website at alfred-password-manager.github.io
