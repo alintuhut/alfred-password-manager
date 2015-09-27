@@ -83,7 +83,6 @@ class Keychain:
             item.type = self._find_key(FIND_TYPE, raw) or self._find_key(FIND_CLASS, raw)
             item.service = self._find_key(FIND_SERVICE, raw) or self._find_key(FIND_SERVER, raw)
             item.comments = self._find_key(FIND_COMMENTS, raw) or self._find_key(FIND_DESC, raw)
-        pprint.pprint(item.comments)
         return item
 
     def get_item(self, service, item_type):

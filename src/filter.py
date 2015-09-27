@@ -113,7 +113,7 @@ def main(wf):
 
         wf.add_item(title=item.service,
                     subtitle=subtitle,
-                    arg=item.service,
+                    arg=item.service + '|||' + ('internet' if item.type == 'inet' else 'generic'),
                     valid=True,
                     icon=icon)
 
