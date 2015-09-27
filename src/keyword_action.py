@@ -35,7 +35,6 @@ def main(wf):
 
     # parse the script's arguments
     args = parser.parse_args(wf.args)
-    wf.logger.debug(args)
 
     # decide what to do based on arguments
     if args.keychain:
