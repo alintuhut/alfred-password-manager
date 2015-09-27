@@ -27,7 +27,7 @@ def main(wf):
             """
             return get_data(keychain_file)
 
-        items = wf.cached_data('items', wrapper, max_age=1)
+        items = wf.cached_data('items', wrapper, max_age=60)
         # Record our progress in the log file
         wf.logger.debug('{} Keychain items cached'.format(len(items)))
 
