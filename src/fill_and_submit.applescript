@@ -1,5 +1,5 @@
 on run argv
-	set separator to "|UNIQUE_SEPARATOR|"
+	set separator to "|--SPLITTER--|"
     set query to item 1 of argv
     if separator is in query then
 		tell application "System Events"
