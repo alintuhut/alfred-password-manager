@@ -24,7 +24,7 @@ A complete, easy to use, Keychain based password manager for Mac OS X, wrapped i
   hotkey -> Dialog window with "service" prefilled -> call security -> notification
 
 * ~~Quick --fuzzy search for password/account in Keychain~~  
-  * ~~keyword {query} -> list -> call security -> clipboard~~
+  ~~keyword {query} -> list -> call security -> clipboard~~
  
 * Icons
 	* icons for result items 
