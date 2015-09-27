@@ -45,6 +45,7 @@ def main(wf):
     # decide what to do based on arguments
     if args.keychain:
         wf.settings['keychain_file'] = args.keychain
+        print wf.settings['keychain_file']
         return 0  # 0 means script exited cleanly
 
     ####################################################################
@@ -101,8 +102,17 @@ def main(wf):
             icon = ICON_KEYCHAIN_NOTE
         else:
             icon = ICON_KEYCHAIN_APPLICATION
+
+        subtitle = ''
+        if item.account:
+            subtitle += item.account
+        if item.comments:
+            if subtitle:
+                subtitle += ', '
+            subtitle += item.comments
+
         wf.add_item(title=item.service,
-                    subtitle=item.comments,
+                    subtitle=subtitle,
                     arg=item.service,
                     valid=True,
                     icon=icon)

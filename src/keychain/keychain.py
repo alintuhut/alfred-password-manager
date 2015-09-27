@@ -29,7 +29,8 @@ FIND_ACCOUNT = re.compile('"acct"<blob>="([^"]+)"').search
 FIND_CLASS = re.compile('class: "([^"]+)"').search
 FIND_SERVICE = re.compile('"svce"<blob>="([^"]+)"').search
 FIND_SERVER = re.compile('"srvr"<blob>="([^"]+)"').search
-FIND_COMMENTS = re.compile('"desc"<blob>="([^"]+)"').search
+FIND_DESC = re.compile('"desc"<blob>="([^"]+)"').search
+FIND_COMMENTS = re.compile('"icmt"<blob>="([^"]+)"').search
 FIND_TYPE = re.compile('"type"<uint32>="([^"]+)"').search
 
 class Keychain:
@@ -81,8 +82,8 @@ class Keychain:
         if detailed:
             item.type = self._find_key(FIND_TYPE, raw) or self._find_key(FIND_CLASS, raw)
             item.service = self._find_key(FIND_SERVICE, raw) or self._find_key(FIND_SERVER, raw)
-            item.comments = self._find_key(FIND_COMMENTS, raw)
-        pprint.pprint(item.type)
+            item.comments = self._find_key(FIND_COMMENTS, raw) or self._find_key(FIND_DESC, raw)
+        pprint.pprint(item.comments)
         return item
 
     def get_item(self, service, item_type):
