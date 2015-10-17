@@ -3,7 +3,7 @@
 import sys
 import argparse
 import subprocess
-from workflow import (Workflow, ICON_WEB, ICON_INFO, ICON_WARNING)
+from workflow import (Workflow, ICON_WEB, ICON_INFO, ICON_WARNING, MATCH_SUBSTRING)
 from workflow.background import run_in_background, is_running
 import os
 import pprint
@@ -15,9 +15,7 @@ ICON_KEYCHAIN_INTERNET = ICON_WEB
 
 def search_key_for_item(item):
     """Generate a string search key for an item"""
-    elements = []
-    if item.account:
-        elements.append(item.account)
+    elements = []    
     if item.service:
         elements.append(item.service)
     if item.comments and len(item.service):
@@ -54,7 +52,7 @@ def main(wf):
     query = args.query
 
     # Get items from cache. Set `data_func` to None, as we don't want to
-    # update the cache in ntthis script and `max_age` to 0 because we want
+    # update the cache in this script and `max_age` to 0 because we want
     # the cached data regardless of age
     items = wf.cached_data('items', None, max_age=0)
 
@@ -72,7 +70,7 @@ def main(wf):
     # If script was passed a query, use it to filter items if we have some
 
     if query and items:
-        items = wf.filter(query, items, key=search_key_for_item)
+        items = wf.filter(query, items, key=search_key_for_item, match_on=MATCH_SUBSTRING)
 
     if not items:  # we have no data to show, so show a warning and stop
         wf.add_item('No items found', icon=ICON_WARNING)
