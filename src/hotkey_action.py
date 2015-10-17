@@ -42,7 +42,7 @@ def main(wf):
             if item.account and item.password:
                 print item.account + SEPARATOR + item.password
             else:
-                print '503: ' + service
+                print '503: Missing data for ' + service
         elif mode == MODE_PASSWORD:
             print item.password
         elif mode == MODE_ACCOUNT:

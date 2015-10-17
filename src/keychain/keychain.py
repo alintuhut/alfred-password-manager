@@ -24,14 +24,14 @@ class KeychainItem(object):
 # Keychain class
 ####################################################################
 
-FIND_PASSWORD = re.compile('password: "([^"]+)"').search
-FIND_ACCOUNT = re.compile('"acct"<blob>="([^"]+)"').search
-FIND_CLASS = re.compile('class: "([^"]+)"').search
-FIND_SERVICE = re.compile('"svce"<blob>="([^"]+)"').search
-FIND_SERVER = re.compile('"srvr"<blob>="([^"]+)"').search
-FIND_DESC = re.compile('"desc"<blob>="([^"]+)"').search
-FIND_COMMENTS = re.compile('"icmt"<blob>="([^"]+)"').search
-FIND_TYPE = re.compile('"type"<uint32>="([^"]+)"').search
+FIND_PASSWORD = re.compile('password: "(.*)"$', re.MULTILINE).search
+FIND_ACCOUNT = re.compile('"acct"<blob>="(.*)"$', re.MULTILINE).search
+FIND_CLASS = re.compile('class: "(.*)"$', re.MULTILINE).search
+FIND_SERVICE = re.compile('"svce"<blob>="(.*)"$', re.MULTILINE).search
+FIND_SERVER = re.compile('"srvr"<blob>="(.*)"$', re.MULTILINE).search
+FIND_DESC = re.compile('"desc"<blob>="(.*)"$', re.MULTILINE).search
+FIND_COMMENTS = re.compile('"icmt"<blob>="(.*)"$', re.MULTILINE).search
+FIND_TYPE = re.compile('"type"<uint32>="(.*)"$', re.MULTILINE).search
 
 class Keychain:
     """Simple wrapper for Mac OS X Keychain"""
