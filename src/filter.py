@@ -28,26 +28,12 @@ def main(wf):
 
     # build argument parser to parse script args and collect their
     # values
-    parser = argparse.ArgumentParser()
-    # add an optional (nargs='?') --keychain argument and save its
-    # value to 'keychain_file' (dest). This will be called from a separate "Run Script"
-    # action with Keychain file
-    parser.add_argument('--keychain', dest='keychain', nargs='?', default=None)
+    parser = argparse.ArgumentParser()    
     # add an optional query and save it to 'query'
     parser.add_argument('query', nargs='?', default=None)
     # parse the script's arguments
     args = parser.parse_args(wf.args)
-
-    ####################################################################
-    # Save the provided Keychain file
-    ####################################################################
-
-    # decide what to do based on arguments
-    if args.keychain:
-        wf.settings['keychain_file'] = args.keychain
-        print wf.settings['keychain_file']
-        return 0  # 0 means script exited cleanly
-
+    
     ####################################################################
     # Check that we have a Keychain file saved
     ####################################################################
