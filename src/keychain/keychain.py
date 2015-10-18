@@ -2,6 +2,7 @@ import sys
 import subprocess
 import re
 import pprint
+import tldextract
 
 ####################################################################
 # Exceptions
@@ -87,9 +88,15 @@ class Keychain:
 
     def get_item(self, service, item_type):
         item_type = item_type or 'generic-password'
-        return self._parse_item(
-            self._call_security('find-' + item_type, '-s', service.strip(), '-g', self._keychain)
-        )
+        try:
+            item = self._call_security('find-' + item_type, '-s', service.strip(), '-g', self._keychain)
+        except:
+            if item_type == 'internet-password':
+                ext = tldextract.extract(service)
+                service2 = ext.domain + '.' + ext.suffix
+                if service != service2:
+                    return self.get_item(service2, item_type)
+        return self._parse_item(item)
 
     def get_all(self):
         items = []
