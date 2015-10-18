@@ -31,6 +31,7 @@ FIND_CLASS = re.compile('class: "(.*)"$', re.MULTILINE).search
 FIND_SERVICE = re.compile('"svce"<blob>="(.*)"$', re.MULTILINE).search
 FIND_SERVER = re.compile('"srvr"<blob>="(.*)"$', re.MULTILINE).search
 FIND_DESC = re.compile('"desc"<blob>="(.*)"$', re.MULTILINE).search
+FIND_NAME = re.compile('0x00000007 <blob>="(.*)"$', re.MULTILINE).search
 FIND_COMMENTS = re.compile('"icmt"<blob>="(.*)"$', re.MULTILINE).search
 FIND_TYPE = re.compile('"type"<uint32>="(.*)"$', re.MULTILINE).search
 
@@ -84,6 +85,7 @@ class Keychain:
             item.type = self._find_key(FIND_TYPE, raw) or self._find_key(FIND_CLASS, raw)
             item.service = self._find_key(FIND_SERVICE, raw) or self._find_key(FIND_SERVER, raw)
             item.comments = self._find_key(FIND_COMMENTS, raw) or self._find_key(FIND_DESC, raw)
+            item.name = self._find_key(FIND_NAME, raw)
         return item
 
     def get_item(self, service, item_type):

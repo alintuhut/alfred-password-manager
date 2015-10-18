@@ -95,7 +95,7 @@ def main(wf):
                 subtitle += ', '
             subtitle += item.comments
 
-        wf.add_item(title=item.service,
+        wf.add_item(title=item.name or item.service,
                     subtitle=subtitle,
                     arg=item.service + '|||' + ('internet' if item.type == 'inet' else 'generic'),
                     valid=True,
