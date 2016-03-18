@@ -25,7 +25,7 @@ class KeychainItem(object):
 # Keychain class
 ####################################################################
 
-FIND_PASSWORD = re.compile('password: "(.*)"$', re.MULTILINE).search
+FIND_PASSWORD = re.compile('password: (?:0x.*)?"(.*)"$', re.MULTILINE).search
 FIND_ACCOUNT = re.compile('"acct"<blob>="(.*)"$', re.MULTILINE).search
 FIND_CLASS = re.compile('class: "(.*)"$', re.MULTILINE).search
 FIND_SERVICE = re.compile('"svce"<blob>="(.*)"$', re.MULTILINE).search
